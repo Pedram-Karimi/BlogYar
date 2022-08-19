@@ -59,7 +59,7 @@ const BestWriters: React.FC = () => {
     };
     getData();
   }, []);
-  // console.log(new Date());
+
   // jsx ---
   return (
     <div className="best-writers">
