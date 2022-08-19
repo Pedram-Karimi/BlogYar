@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&display=swap");
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Asap", sans-serif;
+}
+::selection {
+  color: black;
+  background: var(--primary-color);
+}
+img {
+  object-fit: cover;
+}
+body {
+  background-color: #1b1b1b;
+}
+:root {
+  --primary-color: #00d1bc;
+  --primary-color-hover: #02a998;
+  --light-color: rgb(145, 145, 145);
+  --light-color-hover: rgb(185, 185, 185);
+  --dark-color: #535353;
+  --heart-color: rgb(209, 6, 40);
+  --deafult-background: #1b1b1b;
+  --dark-color-hover: #646464;
+  --dark-border: #1e1d1d;
+  --light-border: rgb(54, 54, 54);
+  --white-text: rgb(196, 196, 196);
+  --dark-background: rgb(34, 34, 34);
+}

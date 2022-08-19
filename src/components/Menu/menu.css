@@ -1,0 +1,28 @@
+.menu {
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  gap: 15px;
+  border-bottom: 2px solid var(--dark-border);
+}
+.menu p {
+  font-size: 14px;
+  color: var(--light-color);
+  transition: 0.2s;
+  cursor: pointer;
+}
+.menu p:hover {
+  color: var(--light-color-hover);
+}
+.create-new-post:hover {
+  color: var(--dark-color-hover);
+}
+
+@media screen and (max-width: 1000px) {
+  .menu {
+    padding: 15px 15px;
+  }
+  .create-new-post {
+    margin: 0px;
+  }
+}

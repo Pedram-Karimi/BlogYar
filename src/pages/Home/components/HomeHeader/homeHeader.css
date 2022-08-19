@@ -1,0 +1,129 @@
+.home-header {
+  padding: 40px 20px;
+  margin: auto;
+  width: 100%;
+}
+.home-header h2 {
+  color: var(--white-text);
+}
+.home-header-body {
+  display: flex;
+  margin-top: 20px;
+}
+.header-post-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  position: relative;
+  max-width: 920px;
+}
+.header-post {
+  width: 450px;
+  height: 220px;
+  display: flex;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: var(--dark-background);
+}
+.header-post img {
+  width: 100%;
+  height: 100%;
+}
+.top-posts-post-info {
+  padding: 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.top-post-post-title {
+  padding-top: 25px;
+  height: 60%;
+}
+.top-post-post-title h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.top-post-post-title p {
+  color: var(--light-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 10px;
+}
+.top-posts-post-writer {
+  padding: 20px 0px;
+  width: 100%;
+}
+.top-posts-post-writer-name {
+  font-weight: bold;
+  color: var(--white-text);
+  font-size: 13px;
+  cursor: pointer;
+}
+.top-posts-post-publish-date {
+  margin-top: 5px;
+  font-size: 11px;
+  color: var(--light-color);
+}
+.write-req {
+  width: 300px;
+  height: 460px;
+  margin-left: 20px;
+  background-color: var(--dark-background);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.write-req div {
+  flex: 1;
+}
+.write-req button {
+  padding: 10px 20px;
+  background-color: var(--dark-color);
+  color: var(--white-text);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: 0.2s;
+  margin-top: 40px;
+  border-radius: 4px;
+}
+.write-req img {
+  width: 100%;
+}
+.write-req button:hover {
+  color: var(--light-color) !important;
+}
+.see-more-link {
+  color: var(--primary-color);
+  cursor: pointer;
+  right: 0px;
+  position: absolute;
+  bottom: -25px;
+}
+.see-more-link:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 1000px) {
+  .write-req {
+    display: none;
+  }
+  .header-post-container {
+    width: 100%;
+  }
+  .header-post {
+    width: 100% !important;
+    height: 150px;
+  }
+  .home-header {
+    width: 100%;
+  }
+}

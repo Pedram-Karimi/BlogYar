@@ -1,0 +1,11 @@
+.posts-container {
+  margin-top: 40px !important;
+  max-width: 700px;
+  margin: auto;
+  padding-bottom: 20px;
+}
+@media screen and (max-width: 1000px) {
+  .posts-container {
+    padding: 0px 20px;
+  }
+}

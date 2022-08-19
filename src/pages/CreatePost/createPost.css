@@ -1,0 +1,41 @@
+.create-post {
+  max-width: 1000px;
+  padding: 40px 0px;
+  margin: auto;
+}
+.create-post-title {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--light-border);
+  padding: 10px;
+  margin-bottom: 20px;
+  transition: 0.2s;
+  outline: none;
+  font-size: 23px;
+}
+.create-post-title:focus {
+  border-bottom: 2px solid var(--white-text);
+}
+.create-post-content {
+  width: 100%;
+  font-size: 20px !important;
+}
+.create-post-content p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+large,
+small {
+  line-height: 30px;
+  font-size: 18px !important;
+  color: var(--white-text);
+}
+.create-post-content > .ql-container > .ql-editor.ql-blank::before {
+  color: var(--dark-color);
+  font-size: 20px;
+  font-style: normal;
+}

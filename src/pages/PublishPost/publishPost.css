@@ -1,0 +1,147 @@
+.publish-post-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.publish-post {
+  width: 1000px;
+  padding: 20px;
+  border-radius: 4px;
+  height: 550px;
+  display: flex;
+  background-color: var(--dark-background);
+}
+.publish-div-right-side {
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.publish-div-right-side input {
+  background-color: transparent;
+  outline: none;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--light-border);
+}
+.publish-div-right-side textarea {
+  background-color: transparent;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  height: 70px;
+  overflow: hidden;
+  resize: none;
+  outline: none;
+  border: none;
+}
+.publish-post-img {
+  width: 400px;
+  height: 200px;
+  transition: 0.2s;
+  cursor: pointer;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dark-color);
+}
+.publish-post-img svg {
+  fill: white;
+  width: 100px;
+  height: 100px;
+}
+.publish-post-img:hover {
+  background-color: var(--dark-color-hover);
+}
+.publish-post-title {
+  color: var(--primary-color);
+  font-size: 20px;
+  padding: 20px 0px;
+  font-weight: bold;
+}
+.inputTag {
+  position: absolute;
+  cursor: pointer;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.2s;
+  height: 200px;
+}
+.inputTag:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.inputTag input {
+  display: none;
+}
+.publish-post-text {
+  color: var(--white-text);
+  margin-bottom: 30px;
+}
+.publish-div-left-side {
+  width: 50%;
+  padding-top: 5px;
+}
+.publish-post-tag-div {
+  border: 1px solid var(--light-border);
+}
+.publish-post-tag-div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+}
+.ignore {
+  display: none;
+}
+.publish-post-tag {
+  padding: 5px 7px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--dark-color);
+  color: var(--white-text);
+}
+.publish-post-tag svg {
+  width: 8px;
+  fill: var(--dark-background);
+  cursor: pointer;
+  margin-left: 10px;
+}
+.publish-post-tag-input {
+  background: transparent;
+  color: var(--white-text);
+  border: none;
+  padding: 0px 5px;
+  font-size: 17px;
+  outline: none;
+}
+.submit-post {
+  width: 130px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 40px;
+  margin-left: calc(100% - 130px);
+  transition: 0.2s;
+  background-color: var(--primary-color);
+  color: white;
+}
+.submit-post:hover {
+  background-color: var(--primary-color-hover);
+}
