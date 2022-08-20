@@ -1,25 +1,50 @@
-import "./navBar.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useUserAuth } from "../../context/UserAuthContext";
+import "./navBar.css"; // styles
+
+import { Link, useNavigate } from "react-router-dom"; // react-router tools
+
+// components
+
 import SearchPopup from "./components/SearchPopup";
+
+// contexts
+
 import { useSearchBoxContext } from "../../context/SearchBoxContext";
-type pageProp = {
+import { useUserAuth } from "../../context/UserAuthContext";
+
+// this component's props
+
+interface Props {
   createPost?: boolean;
   postContent?: string;
   postTitle?: string;
-};
-function NavBar(props: pageProp) {
+}
+
+const NavBar: React.FC<Props> = ({ createPost, postContent, postTitle }) => {
+  // --
+
+  // use context ---
+
   const { user, userDataState } = useUserAuth();
   const { activeSearchBox, changeActiveSearchBox } = useSearchBoxContext();
-  let navigate = useNavigate();
+
+  let navigate = useNavigate(); // navigate var
+
+  // save post content to local storage ------------------------------
+
   function saveLocalPost() {
-    let title = props.postTitle;
-    let content = props.postContent;
+    let title = postTitle;
+    let content = postContent;
     localStorage.setItem("post", JSON.stringify({ title, content }));
   }
+
+  // search box display toggle ------------------------------
+
   const showSearchBox = () => {
     changeActiveSearchBox(true);
   };
+
+  // jsx ---
+
   return (
     <>
       <div className="navBar">
@@ -35,7 +60,7 @@ function NavBar(props: pageProp) {
         </div>
         <div className="right-section">
           {/**search icon */}
-          {!props.createPost ? (
+          {!createPost ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 50 50"
@@ -48,7 +73,7 @@ function NavBar(props: pageProp) {
             <p
               className="publish-post-btn"
               onClick={() => {
-                if (props.postTitle && props.postContent) {
+                if (postTitle && postContent) {
                   saveLocalPost();
                   navigate("/post/publish");
                 }
@@ -95,6 +120,6 @@ function NavBar(props: pageProp) {
       {activeSearchBox && <SearchPopup />}
     </>
   );
-}
+};
 
 export default NavBar;

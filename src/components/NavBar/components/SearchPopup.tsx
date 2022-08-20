@@ -1,15 +1,51 @@
-import Typesense from "typesense";
-import { useUserAuth } from "../../../context/UserAuthContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; // react-hooks
+
+import Typesense from "typesense"; // typesence library
+
+// components
+
 import Post from "../../Post/Post";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../../Firebase/FirebaseConfig";
+
+import { doc, getDoc } from "firebase/firestore"; // firebase tools
+
+import { db } from "../../../Firebase/FirebaseConfig"; // firebase db ref
+
+// contexts
+
 import { useSearchBoxContext } from "../../../context/SearchBoxContext";
-function SearchPopup() {
-  const [searchInput, setSearchInput] = useState("");
-  const [searchedPosts, setSearchedPosts] = useState<any>([]);
-  const [posts, setPosts] = useState<any>([]);
+
+// posts's interface
+
+interface Posts {
+  Description: string;
+  Likes: number;
+  PostImage: string;
+  Tags: string[];
+  Title: string;
+  Viewers: string[];
+  Views: number;
+  Writer: string;
+  createdAt: {
+    seconds: string;
+    nanoseconds: string;
+  };
+  id: string;
+}
+
+const SearchPopup: React.FC = () => {
+  //--
+  // variables ---
+
+  const [searchInput, setSearchInput] = useState<string>();
+  const [searchedPosts, setSearchedPosts] = useState<Posts[]>([]);
+  const [posts, setPosts] = useState<Posts[] | { id: string }[]>([]);
+
+  // use context ---
+
   const { changeActiveSearchBox } = useSearchBoxContext();
+
+  // handle search with typesence ------------------------------
+
   useEffect(() => {
     // checks
     setSearchedPosts([]);
@@ -43,6 +79,9 @@ function SearchPopup() {
         });
       });
   }, [searchInput]);
+
+  // get post's that are searched ------------------------------
+
   useEffect(() => {
     if (searchedPosts.length) {
       searchedPosts.forEach(async (postId) => {
@@ -55,6 +94,8 @@ function SearchPopup() {
       });
     }
   }, [searchedPosts]);
+
+  // jsx ---
   return (
     <div className="search-popup">
       <svg
@@ -89,6 +130,6 @@ function SearchPopup() {
       </div>
     </div>
   );
-}
+};
 
 export default SearchPopup;

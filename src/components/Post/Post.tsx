@@ -1,47 +1,115 @@
-import React, { useEffect, useRef, useState } from "react";
-import "./post.css";
-import { db } from "../../Firebase/FirebaseConfig";
+import { useEffect, useRef, useState } from "react"; // react-hooks
+
+import "./post.css"; // styles
+
+import { db } from "../../Firebase/FirebaseConfig"; // firebase db ref
+
 import {
   doc,
   setDoc,
   arrayUnion,
   arrayRemove,
   getDoc,
-} from "firebase/firestore";
+} from "firebase/firestore"; // firebase tools
+
+import { Link } from "react-router-dom"; // react-router Link
+
+// contexts
+
 import { useUserAuth } from "../../context/UserAuthContext";
-import { Link } from "react-router-dom";
-function Post(props: any) {
+
+// this component's props interface
+
+interface Props {
+  Description: string;
+  Likes: number;
+  PostImage: string;
+  Tags: string[];
+  Title: string;
+  Viewers: string[];
+  Views: number;
+  Writer: string;
+  createdAt: {
+    seconds: string;
+    nanoseconds: string;
+  };
+  id: string;
+}
+
+// user's interface
+
+interface User {
+  Bio?: string;
+  Followers?: number;
+  TotalLikes?: number;
+  UserName?: string;
+  UserProfile?: string;
+  id?: string;
+  lastPost?: string;
+  lastPostDate?: {
+    seconds?: number;
+    nanoseconds?: number;
+  };
+  lastPostTitle?: string;
+}
+
+//--
+const Post: React.FC<Props> = ({
+  Description,
+  PostImage,
+  Title,
+  Writer,
+  createdAt,
+  id,
+}) => {
+  //--
+  // variables ---
+
+  const [currentWriter, setCurrentWriter] = useState<User>();
+  const [dateInThePast, setDateInThePast] = useState<string>();
+  const bookmarkBtnRef = useRef<SVGSVGElement>(null);
+
+  // use contexts ---
+
   const { user, userBookmarks } = useUserAuth();
-  const bookmarkBtnRef = useRef<any>(null);
-  const [currentWriter, setCurrentWriter] = useState<any>();
+
+  // set post's bookmark status ------------------------------
+
   useEffect(() => {
     if (userBookmarks)
-      userBookmarks.includes(props.id)
-        ? bookmarkBtnRef.current.classList.add("active-bookmark")
-        : bookmarkBtnRef.current.classList.remove("active-bookmark");
+      userBookmarks.includes(id)
+        ? bookmarkBtnRef.current?.classList.add("active-bookmark")
+        : bookmarkBtnRef.current?.classList.remove("active-bookmark");
   }, [userBookmarks]);
+
+  // record bookmark to user's db document ------------------------------
+
   const handleBookmark = async () => {
     const bookmarkRef = doc(db, "Bookmarks", user?.uid);
     await setDoc(
       bookmarkRef,
       {
-        bookmarks: userBookmarks.includes(props.id)
-          ? arrayRemove(props.id)
-          : arrayUnion(props.id),
+        bookmarks: userBookmarks.includes(id)
+          ? arrayRemove(id)
+          : arrayUnion(id),
       },
       { merge: true }
     );
   };
+
+  // get the post's writer data ------------------------------
+
   useEffect(() => {
     const fetchCurrentWriter = async () => {
-      const userRef = doc(db, "users", props.Writer);
+      const userRef = doc(db, "users", Writer);
       const userDocument = await getDoc(userRef);
       setCurrentWriter(userDocument.data());
     };
     fetchCurrentWriter();
   }, []);
-  //formating time
-  const [dateInThePast, setDateInThePast] = useState<string>();
+
+  //formating post's publich time ------------------------------
+
   const getPastDate = (pastTimestamp) => {
     const secondsThatHavePassed = Math.floor(Date.now() / 1000) - pastTimestamp;
     if (secondsThatHavePassed < 60) {
@@ -59,14 +127,16 @@ function Post(props: any) {
     }
   };
   useEffect(() => {
-    if (props.createdAt) setDateInThePast(getPastDate(props.createdAt.seconds));
-  }, [props]);
+    if (createdAt) setDateInThePast(getPastDate(createdAt.seconds));
+  }, [createdAt]);
+
+  // jsx ---
   return (
     <div className="post">
       <div className="blog-info">
-        <Link to={`/post/${props.id}`} style={{ textDecoration: "none" }}>
-          <h2 className="blog-title">{props.Title}</h2>
-          <p className="short-blog-info">{props.Description}</p>
+        <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
+          <h2 className="blog-title">{Title}</h2>
+          <p className="short-blog-info">{Description}</p>
         </Link>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -78,20 +148,12 @@ function Post(props: any) {
           <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
         </svg>
         <div className="blog-writer">
-          <Link
-            to={
-              props.Writer !== user?.uid ? `/user/${props.Writer}` : "/profile"
-            }
-          >
+          <Link to={Writer !== user?.uid ? `/user/${Writer}` : "/profile"}>
             <img src={currentWriter?.UserProfile} className="blog-writer-img" />
           </Link>
           <div className="writer-text-info">
             <Link
-              to={
-                props.Writer !== user?.uid
-                  ? `/user/${props.Writer}`
-                  : "/profile"
-              }
+              to={Writer !== user?.uid ? `/user/${Writer}` : "/profile"}
               style={{ textDecoration: "none" }}
             >
               <p className="writer-name">{currentWriter?.UserName}</p>
@@ -100,11 +162,11 @@ function Post(props: any) {
           </div>
         </div>
       </div>
-      <Link to={`/post/${props.id}`} style={{ textDecoration: "none" }}>
-        <img src={props.PostImage} className="blog-image" />
+      <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
+        <img src={PostImage} className="blog-image" />
       </Link>
     </div>
   );
-}
+};
 
 export default Post;

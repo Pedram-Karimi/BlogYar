@@ -1,9 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./menu.css";
-import { useUserAuth } from "../../context/UserAuthContext";
-function Menu() {
-  const { user } = useUserAuth();
+import { Link } from "react-router-dom"; // react-router link
+
+import "./menu.css"; // styles
+
+const Menu: React.FC<{}> = () => {
+  //--
+
+  // jsx ---
   return (
     <div className="menu">
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -14,6 +16,6 @@ function Menu() {
       </Link>
     </div>
   );
-}
+};
 
 export default Menu;
