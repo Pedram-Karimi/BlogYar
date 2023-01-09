@@ -107,12 +107,12 @@ const HeaderPost: React.FC<Props> = ({
         {Writer && <img src={PostImage} />}
       </Link>
       <div className="top-posts-post-info">
-        <div className="top-post-post-title">
-          <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
+          <div className="top-post-post-title">
             <h2>{Title}</h2>
             <p>{Description}</p>
-          </Link>
-        </div>
+          </div>
+        </Link>
         <div className="top-posts-post-writer">
           <Link
             to={Writer !== user?.uid ? `/user/${Writer}` : "/profile"}

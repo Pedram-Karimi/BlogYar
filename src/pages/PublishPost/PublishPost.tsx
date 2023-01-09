@@ -20,7 +20,7 @@ const PublishPost: React.FC = () => {
   //---
   //variables ----
 
-  const localPosts = JSON.parse(localStorage.getItem("post") ?? "");
+  const localPosts = JSON.parse(localStorage.getItem("post") || "{}");
   const [tags, setTags] = useState<string[]>([]);
   const [tagInput, setTagInput] = useState<string>("");
   const [description, setDescription] = useState<string>("");
@@ -65,7 +65,7 @@ const PublishPost: React.FC = () => {
   // publish post to firestore db
 
   const publishPost = () => {
-    if (imageUpload && description && tags.length == 5 && title) {
+    if (imageUpload && description && tags.length === 5 && title) {
       const imageRef = ref(storage, `${postImgUrl}/img`);
       uploadBytes(imageRef, imageUpload).then(() => {
         const imgListRef = ref(storage, postImgUrl);
@@ -95,8 +95,8 @@ const PublishPost: React.FC = () => {
           Views: 0,
         });
         localStorage.clear();
-        navigate("/");
       }
+      // navigate("/");
     } else {
       alert("fill the inputs");
     }

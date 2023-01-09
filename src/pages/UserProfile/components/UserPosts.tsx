@@ -7,7 +7,6 @@ import { db } from "../../../Firebase/FirebaseConfig"; // firebaes db ref
 
 // contexts
 
-import { useFullPost } from "../../../context/FullPostContext";
 import { useUserAuth } from "../../../context/UserAuthContext";
 
 // components
@@ -43,7 +42,6 @@ const UserPosts: React.FC = () => {
   // use contexts---
 
   const { user } = useUserAuth();
-  const { changeLeftOverData } = useFullPost();
 
   // get user's posts ------------------------------
 
@@ -60,10 +58,6 @@ const UserPosts: React.FC = () => {
       const documentSnapshots = await getDocs(first);
       documentSnapshots.docs.forEach((shot) => {
         setPosts((pervPosts) => [
-          ...pervPosts,
-          { ...shot.data(), id: shot.id },
-        ]);
-        changeLeftOverData((pervPosts) => [
           ...pervPosts,
           { ...shot.data(), id: shot.id },
         ]);

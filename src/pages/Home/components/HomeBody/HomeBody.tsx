@@ -8,8 +8,6 @@ import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 
 // contexts
 
-import { useFullPost } from "../../../../context/FullPostContext";
-
 // components
 
 import Post from "../../../../components/Post/Post";
@@ -44,8 +42,6 @@ const HomeBody: React.FC = () => {
 
   // use contexts
 
-  const { changeLeftOverData } = useFullPost();
-
   // get posts from db ------------------------------
 
   useEffect(() => {
@@ -59,10 +55,6 @@ const HomeBody: React.FC = () => {
       documentSnapshots.docs.forEach((shot) => {
         console.log();
         setPosts((pervPosts) => [
-          ...pervPosts,
-          { ...shot.data(), id: shot.id },
-        ]);
-        changeLeftOverData((pervPosts) => [
           ...pervPosts,
           { ...shot.data(), id: shot.id },
         ]);

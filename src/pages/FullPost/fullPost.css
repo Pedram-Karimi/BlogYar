@@ -72,12 +72,14 @@
 .full-post-title {
   color: var(--white-text);
   font-size: 30px !important;
+  line-height: 40px;
 }
 .post-main-image {
   width: 100%;
   max-height: 400px;
   object-fit: cover;
   margin: 20px 0px;
+  border-radius: 8px;
 }
 .post-paragraph {
   font-size: 20px;
@@ -121,7 +123,6 @@ h6 {
 }
 .post-config {
   width: 100%;
-  margin-top: 40px;
 }
 .post-tags {
   width: 100%;
@@ -161,12 +162,9 @@ h6 {
   cursor: pointer;
 }
 .heart-svg {
-  fill: transparent;
+  fill: rgba(0, 0, 0, 0);
   transition: 0.2s;
   stroke: var(--white-text);
-}
-.heart-svg:hover {
-  stroke: var(--heart-color);
 }
 .comment-svg {
   fill: var(--white-text);
@@ -179,8 +177,7 @@ h6 {
   fill: var(--light-color);
 }
 .active-like {
-  stroke: var(--heart-color);
-  fill: var(--heart-color);
+  fill: var(--white-text);
 }
 .post-page-url {
   padding: 7px 9px;
@@ -265,6 +262,7 @@ h6 {
 .write-comment {
   background-color: var(--deafult-background);
   padding: 20px;
+  border-radius: 8px;
 }
 .write-comment-header p {
   color: var(--white-text) !important;
@@ -301,6 +299,7 @@ h6 {
   color: var(--white-text);
   cursor: pointer;
   font-size: 19px;
+  border-radius: 8px;
   background-color: transparent;
   transition: 0.2s;
   border: 1px solid var(--light-border);
@@ -318,11 +317,12 @@ h6 {
 .comment-box {
   width: 100%;
   padding: 20px;
+  border-radius: 8px;
   background-color: var(--deafult-background);
 }
 .comment-box-header {
   display: flex;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   gap: 15px;
   align-items: center;
 }
@@ -332,6 +332,8 @@ h6 {
 }
 .comment-box-body {
   color: var(--white-text);
+  padding-top: 8px;
+  padding-bottom: 8px;
   line-height: 30px;
 }
 .comment-publish-time {
@@ -362,9 +364,69 @@ h6 {
   width: 100%;
 }
 .related-post {
+  border-radius: 8px;
   width: 300px;
   height: 320px;
   background-color: #1b1b1b;
-  border-radius: 4px;
   border: 1px solid var(--dark-background);
+}
+.reply-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  direction: rtl;
+  gap: 20px;
+  align-items: center;
+  font-weight: bold;
+}
+.reply-buttons p {
+  font-weight: bold;
+  cursor: pointer;
+}
+.write-reply {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.write-reply span,
+button {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 17px;
+}
+.textareaSpan {
+  min-height: 17px;
+  cursor: text;
+}
+.textareaSpan[contenteditable]:empty::before {
+  content: "your comment";
+  color: gray;
+}
+
+/* Just for demo */
+* {
+  box-sizing: border-box;
+}
+.write-reply button {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid var(--light-border);
+}
+.write-reply button:hover {
+  background-color: var(--dark-background);
+}
+.replies-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}
+.reply-level {
+  border-radius: 8px;
+  border: 1px solid var(--light-border);
 }

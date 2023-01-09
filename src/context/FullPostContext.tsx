@@ -1,8 +1,12 @@
 import { createContext, useContext, useState } from "react";
 
-const FullPostContext = createContext();
+const FullPostContext = createContext<any>(null);
 
-export function FullPostContextProvider({ children }) {
+type ChildComponents = {
+  children: JSX.Element;
+};
+
+export function FullPostContextProvider({ children }: ChildComponents) {
   const [leftOverData, setLeftOverData] = useState([]);
   function changeLeftOverData(data) {
     setLeftOverData(data);

@@ -53,9 +53,9 @@ const WriteComment: React.FC<{ postId: string }> = ({ postId }) => {
           commentWriter: user?.uid,
           commentWriterPic: userDataState?.UserProfile,
           commentWriterName: userDataState?.UserName,
-          id: postId,
           commentText: commentText,
-          createdAt: "now",
+          docId: postContentRef.id,
+          createdAtNew: "now",
         });
 
         //

@@ -8,7 +8,7 @@
   background-color: transparent;
   border: none;
   border-bottom: 2px solid var(--light-border);
-  padding: 10px;
+  padding: 10px 0px;
   margin-bottom: 20px;
   transition: 0.2s;
   outline: none;
@@ -36,6 +36,26 @@ small {
 }
 .create-post-content > .ql-container > .ql-editor.ql-blank::before {
   color: var(--dark-color);
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
   font-size: 20px;
+  padding: 0px !important;
   font-style: normal;
+}
+.create-post-content div {
+  padding: 0px !important;
+}
+.submitArticle {
+  padding: 10px;
+  border: 1px solid var(--light-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  float: right;
+  margin-bottom: 20px;
+}
+.submitArticle:hover {
+  background-color: var(--dark-background);
 }

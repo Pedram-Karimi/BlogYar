@@ -11,6 +11,7 @@
   width: 160px;
   cursor: pointer;
   height: 190px;
+  border-radius: 8px;
   object-fit: cover;
 }
 .blog-info {
@@ -83,21 +84,4 @@
 }
 .active-bookmark {
   fill: var(--white-text) !important;
-}
-@media screen and (max-width: 1000px) {
-  .blog-image {
-    width: 100px;
-    height: 100px;
-  }
-  .blog-title {
-    font-size: 20px;
-  }
-  .short-blog-info {
-    font-size: 12px;
-  }
-  .post {
-    width: 100%;
-    padding: 20px 0px;
-    height: fit-content;
-  }
 }

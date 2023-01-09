@@ -3,7 +3,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  color: white;
+  color: rgb(196, 196, 196);
   font-family: "Asap", sans-serif;
 }
 ::selection {

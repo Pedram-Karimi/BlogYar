@@ -86,20 +86,6 @@
 .search-btn:hover {
   stroke: var(--dark-color-hover);
 }
-.publish-post-btn {
-  font-size: 16px;
-  padding: 10px;
-  font-weight: bold;
-  transition: 0.2s;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  color: var(--white-text);
-}
-.publish-post-btn:hover {
-  background-color: var(--dark-background);
-}
 .post-publish-arrow {
   width: 24px;
   height: 24px;
@@ -121,6 +107,14 @@
 }
 .search-box {
   width: 100%;
+  display: flex;
+  align-items: center;
+}
+.search-box form {
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin-top: 40px;
 }
 .search-box-item {
   background-color: transparent;
@@ -136,6 +130,25 @@
 .search-box-item:focus {
   border-bottom: 2px solid var(--white-text);
 }
+.search-box button {
+  background-color: transparent;
+  position: absolute;
+  border: none;
+  outline: none;
+  right: 0px;
+  cursor: pointer;
+  bottom: 10px;
+}
+.search-box button:hover svg {
+  fill: var(--white-text);
+}
+.search-box button svg {
+  height: 40px;
+  width: 40px;
+  transition: 0.2s;
+  margin: 0px 10px;
+  fill: var(--dark-color);
+}
 .resultFor-text {
   padding: 30px 0px;
   color: var(--dark-color);
@@ -143,8 +156,8 @@
 }
 .search-result {
   width: 100%;
-
   overflow: auto;
+  margin-top: 20px;
   flex: 1;
 }
 .search-posts-wrapper {

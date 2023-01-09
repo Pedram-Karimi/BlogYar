@@ -66,9 +66,7 @@ const HomeHeader: React.FC = () => {
           {posts.map((post, index) => {
             return <HeaderPost {...post} key={index} />;
           })}
-          <p className="see-more-link">see more</p>
         </div>
-        <WriteReq />
       </div>
     </div>
   );

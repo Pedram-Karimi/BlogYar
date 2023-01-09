@@ -15,7 +15,6 @@ import "./userDetail.css"; // styles
 
 import { useUserAuth } from "../../context/UserAuthContext";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
 
 // componets
 
@@ -123,102 +122,99 @@ const UserDetail: React.FC = () => {
 
   // jsx---
   return (
-    <>
-      <NavBar />
-      <div className="user-detail">
-        <div className="genrall-info-config">
+    <div className="user-detail">
+      <div className="genrall-info-config">
+        <button
+          className="sign-out-btn"
+          onClick={() => {
+            logOut();
+            navigate("/");
+          }}
+        >
+          Sign out
+        </button>
+        <div
+          className="change-profile-pic-div"
+          style={{
+            background: `url(${userDataState?.UserProfile})`,
+          }}
+        >
+          <label htmlFor="inputTag-avatar" className="inputTag-avatar">
+            <input
+              type="file"
+              id="inputTag-avatar"
+              className="choose-file"
+              onChange={(e: any) => {
+                setImageUpload(e.target.files[0]);
+              }}
+            />
+          </label>
+          <div>
+            <img src="../svg/photo-camera-svgrepo-com.svg" />
+          </div>
+        </div>
+        <div className="genral-info-edit">
+          <input
+            className="current-user-name"
+            value={currUserName}
+            onChange={(e) => {
+              setCurrUserName(e.target.value);
+            }}
+          />
+          <input
+            className="current-user-bio"
+            value={currUserBio}
+            placeholder="Bio"
+            onChange={(e) => {
+              setCurrUserBio(e.target.value);
+            }}
+          />
           <button
-            className="sign-out-btn"
-            onClick={() => {
-              logOut();
-              navigate("/");
-            }}
+            className={`submit-profile-chnage ${
+              currUserBio === userDataState?.Bio &&
+              currUserName === userDataState?.UserName &&
+              "submit-profile-chnage-disable"
+            }`}
+            onClick={submitChange}
           >
-            Sign out
+            submit
           </button>
-          <div
-            className="change-profile-pic-div"
-            style={{
-              background: `url(${userDataState?.UserProfile})`,
-            }}
-          >
-            <label htmlFor="inputTag-avatar" className="inputTag-avatar">
-              <input
-                type="file"
-                id="inputTag-avatar"
-                className="choose-file"
-                onChange={(e: any) => {
-                  setImageUpload(e.target.files[0]);
-                }}
-              />
-            </label>
-            <div>
-              <img src="../svg/photo-camera-svgrepo-com.svg" />
-            </div>
-          </div>
-          <div className="genral-info-edit">
-            <input
-              className="current-user-name"
-              value={currUserName}
-              onChange={(e) => {
-                setCurrUserName(e.target.value);
-              }}
-            />
-            <input
-              className="current-user-bio"
-              value={currUserBio}
-              placeholder="Bio"
-              onChange={(e) => {
-                setCurrUserBio(e.target.value);
-              }}
-            />
-            <button
-              className={`submit-profile-chnage ${
-                currUserBio === userDataState?.Bio &&
-                currUserName === userDataState?.UserName &&
-                "submit-profile-chnage-disable"
-              }`}
-              onClick={submitChange}
-            >
-              submit
-            </button>
-          </div>
         </div>
-        <div className="current-user-short-info">
-          <p>Followers: {userDataState?.Followers}</p>
-          <p>Subscriptions: {userSubs?.length}</p>
-        </div>
-        <div className="user-posts-menu">
-          <h2
-            className={postsMenu == "posts" ? "posts-menu-active" : ""}
-            onClick={() => {
-              setPostsMenu("posts");
-            }}
-          >
-            Your posts
-          </h2>
-          <h2
-            className={postsMenu == "bookmarks" ? "posts-menu-active" : ""}
-            onClick={() => {
-              setPostsMenu("bookmarks");
-            }}
-          >
-            Book marks
-          </h2>
-          <h2
-            className={postsMenu == "Subscriptions" ? "posts-menu-active" : ""}
-            onClick={() => {
-              setPostsMenu("Subscriptions");
-            }}
-          >
-            Subscriptions
-          </h2>
-        </div>
-        {postsMenu == "posts" && <UserPosts />}
-        {postsMenu == "bookmarks" && <UserBookmarks />}
-        {postsMenu == "Subscriptions" && <UserSubscriptions />}
       </div>
-    </>
+      <div className="current-user-short-info">
+        <p>Followers: {userDataState?.Followers}</p>
+        <p>Subscriptions: {userSubs?.length}</p>
+      </div>
+      <div className="user-posts-menu">
+        <h2
+          className={postsMenu == "posts" ? "posts-menu-active" : ""}
+          onClick={() => {
+            setPostsMenu("posts");
+          }}
+        >
+          Your posts
+        </h2>
+        <h2
+          className={postsMenu == "bookmarks" ? "posts-menu-active" : ""}
+          onClick={() => {
+            setPostsMenu("bookmarks");
+          }}
+        >
+          Book marks
+        </h2>
+        <h2
+          className={postsMenu == "Subscriptions" ? "posts-menu-active" : ""}
+          onClick={() => {
+            setPostsMenu("Subscriptions");
+          }}
+        >
+          Subscriptions
+        </h2>
+      </div>
+      {postsMenu == "posts" && <UserPosts />}
+      {postsMenu == "bookmarks" && <UserBookmarks />}
+      {postsMenu == "Subscriptions" && <UserSubscriptions />}
+    </div>
   );
 };
 

@@ -15,7 +15,6 @@ import {
 
 // contexts
 
-import { useFullPost } from "../../../context/FullPostContext";
 import { useUserAuth } from "../../../context/UserAuthContext";
 
 import { db } from "../../../Firebase/FirebaseConfig"; // firebase db ref
@@ -49,7 +48,6 @@ const UserSubscriptions: React.FC = () => {
   // use contexts---
 
   const { user, userSubs } = useUserAuth();
-  const { changeLeftOverData } = useFullPost();
 
   // get subed writers ------------------------------
 
@@ -66,10 +64,6 @@ const UserSubscriptions: React.FC = () => {
       const documentSnapshots = await getDocs(first);
       documentSnapshots.docs.forEach((shot) => {
         setSubedUsers((pervPosts) => [
-          ...pervPosts,
-          { ...shot.data(), id: shot.id },
-        ]);
-        changeLeftOverData((pervPosts) => [
           ...pervPosts,
           { ...shot.data(), id: shot.id },
         ]);

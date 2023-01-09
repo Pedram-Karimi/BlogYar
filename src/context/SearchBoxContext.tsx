@@ -1,8 +1,12 @@
 import { createContext, useContext, useState } from "react";
 
-const SearchBoxContext = createContext();
+const SearchBoxContext = createContext<any>(null);
 
-export function ShBoxContextProvider({ children }) {
+type ChildComponents = {
+  children: JSX.Element;
+};
+
+export function ShBoxContextProvider({ children }: ChildComponents) {
   const [activeSearchBox, setActiveSearchBox] = useState(false);
   function changeActiveSearchBox(bool) {
     setActiveSearchBox(bool);

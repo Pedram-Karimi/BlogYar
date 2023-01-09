@@ -1,10 +1,14 @@
 import { createContext, useContext, useState } from "react";
 
-const CommentContext = createContext();
+const CommentContext = createContext<any>(null);
 
-export function CommentContextProvider({ children }) {
+type ChildComponents = {
+  children: JSX.Element;
+};
+
+export function CommentContextProvider({ children }: ChildComponents) {
   const [newComment, setUpdateComment] = useState(null);
-  function changeNewComment(comment) {
+  function changeNewComment(comment: any) {
     setUpdateComment(comment);
   }
   return (

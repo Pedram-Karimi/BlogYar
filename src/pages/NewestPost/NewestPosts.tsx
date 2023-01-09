@@ -11,7 +11,6 @@ import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
 // components
 
 import Menu from "../../components/Menu/Menu";
-import NavBar from "../../components/NavBar/NavBar";
 import Post from "../../components/Post/Post";
 
 // posts interface
@@ -66,7 +65,6 @@ const NewestPosts: React.FC = () => {
   // jsx ---
   return (
     <div className="newest-posts">
-      <NavBar />
       <Menu />
       <div className="posts-container">
         <h2

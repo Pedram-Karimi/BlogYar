@@ -30,8 +30,8 @@ interface Props {
   Views: number;
   Writer: string;
   createdAt: {
-    seconds: string;
-    nanoseconds: string;
+    seconds: number;
+    nanoseconds: number;
   };
   id: string;
 }
@@ -76,7 +76,7 @@ const Post: React.FC<Props> = ({
   // set post's bookmark status ------------------------------
 
   useEffect(() => {
-    if (userBookmarks)
+    if (userBookmarks[0])
       userBookmarks.includes(id)
         ? bookmarkBtnRef.current?.classList.add("active-bookmark")
         : bookmarkBtnRef.current?.classList.remove("active-bookmark");

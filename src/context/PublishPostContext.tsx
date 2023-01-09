@@ -1,15 +1,29 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { collection, addDoc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  setDoc,
+  doc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { db } from "../Firebase/FirebaseConfig";
-import { doc, serverTimestamp } from "firebase/firestore";
+
 import Typesense from "typesense";
 import { useUserAuth } from "./UserAuthContext";
-const PublishContext = createContext();
+import { useNavigate } from "react-router-dom";
 
-export function PublishContextProvider({ children }) {
+const PublishContext = createContext<any>(null);
+
+type ChildComponents = {
+  children: JSX.Element;
+};
+
+export function PublishContextProvider({ children }: ChildComponents) {
   const [postData, setPostData] = useState(null);
   const [postContent, setPostContent] = useState(null);
   const { user } = useUserAuth();
+  const navigate = useNavigate();
+
   function changePostContent(data) {
     setPostContent(data);
   }
@@ -18,15 +32,16 @@ export function PublishContextProvider({ children }) {
   }
   useEffect(() => {
     const PostsRef = collection(db, "Posts");
-    if (postData && postContent) {
-      const addData = async () => {
+
+    const addData = async () => {
+      if (postData && postContent) {
         try {
           const postRef = await addDoc(PostsRef, {
-            ...postData,
+            ...(postData as Record<string, unknown>),
             createdAt: serverTimestamp(),
           });
           const postContentRef = await addDoc(collection(db, "PostFullData"), {
-            ...postContent,
+            ...(postContent as Record<string, unknown>),
             createdAt: serverTimestamp(),
             id: postRef.id,
           });
@@ -50,39 +65,37 @@ export function PublishContextProvider({ children }) {
             //   ],
             // };
             // client.collections().create(myCollection);
+
             const document = {
               id: postRef.id,
-              postTitle: postData?.Title,
+              postTitle: postData["Title"],
             };
             return client.collections("posts").documents().create(document);
           };
           addToTypesese();
           if (user) {
             const userRef = doc(db, "users", user.uid);
-            const setLastPostDate = async () => {
-              const setLastDate = await setDoc(
-                userRef,
-                {
-                  lastPostDate: serverTimestamp(),
-                  lastPostTitle: postData?.Title,
-                  lastPost: postRef.id,
-                },
-                { merge: true }
-              );
-            };
-            setLastPostDate();
+            const setLastDate = await setDoc(
+              userRef,
+              {
+                lastPostDate: serverTimestamp(),
+                lastPostTitle: postData["Title"],
+                lastPost: postRef.id,
+              },
+              { merge: true }
+            );
           }
+
+          navigate("/");
         } catch (err) {
           console.log(err);
         }
-      };
-      addData();
-    }
+      }
+    };
+    addData();
   }, [postData]);
   return (
-    <PublishContext.Provider
-      value={{ postData, changePostData, changePostContent }}
-    >
+    <PublishContext.Provider value={{ changePostData, changePostContent }}>
       {children}
     </PublishContext.Provider>
   );

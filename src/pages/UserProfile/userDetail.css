@@ -9,6 +9,7 @@
   background-color: transparent;
   border: 1px solid var(--light-border);
   cursor: pointer;
+  border-radius: 8px;
   padding: 10px;
   display: flex;
   position: absolute;
@@ -57,6 +58,7 @@
   border: 1px solid var(--light-border);
   outline: none;
   font-size: 17px;
+  border-radius: 8px;
   cursor: pointer;
   padding: 8px 10px;
 }
@@ -88,6 +90,7 @@
   justify-content: center;
   overflow: hidden;
 }
+
 .change-profile-pic-div div {
   position: absolute;
   bottom: 0px;
@@ -142,6 +145,7 @@
 }
 .user-posts-post-container {
   max-width: 700px;
+  padding: 0px 20px;
   margin: auto;
   height: 100vh;
 }

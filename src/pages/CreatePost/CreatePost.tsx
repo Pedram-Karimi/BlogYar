@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"; // react-hooks
 
 import { useQuill } from "react-quilljs"; // quill
 
+import { useNavigate } from "react-router-dom";
+
 import "quill/dist/quill.bubble.css"; // quill css file
 
 // components
-
-import NavBar from "../../components/NavBar/NavBar";
 
 import "./createPost.css"; // styles
 
@@ -24,6 +24,8 @@ const CreatePost: React.FC<{}> = ({}) => {
       : ""
   );
 
+  let navigate = useNavigate(); // navigate var
+
   // quill rich text editor config ------------------------------
 
   const theme = "bubble";
@@ -38,29 +40,33 @@ const CreatePost: React.FC<{}> = ({}) => {
     }
   }, [quill]);
 
+  // submit the article date to the localstorage
+
+  const submitArticle = async () => {
+    let title = postTitle;
+    let content = postContent;
+    localStorage.setItem("post", JSON.stringify({ title, content }));
+    navigate("/post/publish");
+  };
   //jsx ---
   return (
-    <>
-      <NavBar
-        postTitle={postTitle}
-        createPost={true}
-        postContent={postContent}
+    <div className="create-post">
+      <input
+        className="create-post-title"
+        placeholder="Write a title"
+        maxLength={80}
+        value={postTitle}
+        onChange={(e) => {
+          setPostTitle(e.target.value);
+        }}
       />
-      <div className="create-post">
-        <input
-          className="create-post-title"
-          placeholder="Write a title"
-          maxLength={60}
-          value={postTitle}
-          onChange={(e) => {
-            setPostTitle(e.target.value);
-          }}
-        />
-        <div className="create-post-content">
-          <div ref={quillRef} />
-        </div>
+      <div className="create-post-content">
+        <div ref={quillRef} />
       </div>
-    </>
+      <button className="submitArticle" onClick={submitArticle}>
+        Submit Article
+      </button>
+    </div>
   );
 };
 

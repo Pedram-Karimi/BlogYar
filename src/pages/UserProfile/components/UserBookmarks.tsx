@@ -13,7 +13,6 @@ import { db } from "../../../Firebase/FirebaseConfig"; // firebase db ref
 
 // contexts
 
-import { useFullPost } from "../../../context/FullPostContext";
 import { useUserAuth } from "../../../context/UserAuthContext";
 
 // components
@@ -50,7 +49,6 @@ const UserBookmarks: React.FC = () => {
   // use contexts---
 
   const { userDataState, user, userBookmarks } = useUserAuth();
-  const { changeLeftOverData } = useFullPost();
 
   // get user's bookmarked posts ------------------------------
 
@@ -68,10 +66,6 @@ const UserBookmarks: React.FC = () => {
         const documentSnapshots = await getDocs(first);
         documentSnapshots.forEach((shot) => {
           setBookMarkPosts((pervPosts) => [
-            ...pervPosts,
-            { ...shot.data(), id: shot.id },
-          ]);
-          changeLeftOverData((pervPosts) => [
             ...pervPosts,
             { ...shot.data(), id: shot.id },
           ]);

@@ -18,11 +18,8 @@ import { db } from "../../Firebase/FirebaseConfig"; // firebase db ref
 
 // contexts
 
-import { useFullPost } from "../../context/FullPostContext";
-
 // components
 
-import NavBar from "../../components/NavBar/NavBar";
 import Post from "../../components/Post/Post";
 
 // post's interface
@@ -72,8 +69,6 @@ const PostWriterProfile: React.FC = () => {
 
   // use contexts ---
 
-  const { changeLeftOverData } = useFullPost();
-
   // get writer's data ------------------------------
 
   useEffect(() => {
@@ -104,10 +99,6 @@ const PostWriterProfile: React.FC = () => {
           ...pervPosts,
           { ...shot.data(), id: shot.id },
         ]);
-        changeLeftOverData((pervPosts) => [
-          ...pervPosts,
-          { ...shot.data(), id: shot.id },
-        ]);
       });
       const lastVisibleShot =
         documentSnapshots.docs[documentSnapshots.docs.length - 1];
@@ -118,36 +109,33 @@ const PostWriterProfile: React.FC = () => {
 
   // jsx ---
   return (
-    <>
-      <NavBar />
-      <div className="post-writer-profile">
-        <div className="post-writer-genral-info">
-          <div className="post-writer-profile-pic">
-            <img src={writerProfile?.UserProfile} />
-          </div>
-          <div className="post-writer-profile-name">
-            <p className="post-writer-user-name">{writerProfile?.UserName}</p>
-            <p className="post-writer-user-bio">{writerProfile?.Bio}</p>
-          </div>
+    <div className="post-writer-profile">
+      <div className="post-writer-genral-info">
+        <div className="post-writer-profile-pic">
+          <img src={writerProfile?.UserProfile} />
         </div>
-        <div className="post-writer-short-info">
-          <p>Followers: {writerProfile?.Followers}</p>
+        <div className="post-writer-profile-name">
+          <p className="post-writer-user-name">{writerProfile?.UserName}</p>
+          <p className="post-writer-user-bio">{writerProfile?.Bio}</p>
         </div>
-        <div className="post-writer-all-posts">
-          <div className="post-writer-all-posts-menu">
-            <h2>Posts</h2>
-          </div>
-          <div className="user-posts">
-            <div className="user-posts-post-container">
-              {posts.length >= 1 &&
-                posts.map((post, index) => {
-                  return <Post {...post} key={index} />;
-                })}
-            </div>
+      </div>
+      <div className="post-writer-short-info">
+        <p>Followers: {writerProfile?.Followers}</p>
+      </div>
+      <div className="post-writer-all-posts">
+        <div className="post-writer-all-posts-menu">
+          <h2>Posts</h2>
+        </div>
+        <div className="user-posts">
+          <div className="user-posts-post-container">
+            {posts.length >= 1 &&
+              posts.map((post, index) => {
+                return <Post {...post} key={index} />;
+              })}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

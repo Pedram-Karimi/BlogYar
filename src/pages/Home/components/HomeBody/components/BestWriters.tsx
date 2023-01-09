@@ -44,13 +44,19 @@ const BestWriters: React.FC = () => {
 
   useEffect(() => {
     const getData = async () => {
+      // geting 30 days ago unix time
+
+      let now = new Date();
+      const backdate = new Date(now.setDate(now.getDate() - 30));
+
       const postsCollectionRef = collection(db, "users");
       const q = query(
         postsCollectionRef,
+        where("lastPostDate", ">=", backdate),
         orderBy("lastPostDate", "desc"),
         orderBy("Followers", "desc"),
         orderBy("TotalLikes", "desc"),
-        limit(4)
+        limit(5)
       );
       const getTopPosts = await getDocs(q);
       getTopPosts.docs.forEach((doc) => {
