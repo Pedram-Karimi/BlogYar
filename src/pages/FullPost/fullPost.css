@@ -79,6 +79,7 @@
   max-height: 400px;
   object-fit: cover;
   margin: 20px 0px;
+  border: 1px solid var(--light-border);
   border-radius: 8px;
 }
 .post-paragraph {
@@ -136,7 +137,7 @@ h6 {
   height: fit-content;
   cursor: pointer;
   width: fit-content;
-  background-color: var(--dark-background);
+  border: 1px solid var(--lighter-border);
   border-radius: 4px;
 }
 .post-base-data {
@@ -260,9 +261,10 @@ h6 {
   font-weight: bold;
 }
 .write-comment {
-  background-color: var(--deafult-background);
+  background-color: var(--layer2-background);
   padding: 20px;
   border-radius: 8px;
+  border: 1px solid var(--light-border);
 }
 .write-comment-header p {
   color: var(--white-text) !important;
@@ -318,7 +320,8 @@ h6 {
   width: 100%;
   padding: 20px;
   border-radius: 8px;
-  background-color: var(--deafult-background);
+  border: 1px solid var(--light-border);
+  background-color: var(--layer2-background);
 }
 .comment-box-header {
   display: flex;

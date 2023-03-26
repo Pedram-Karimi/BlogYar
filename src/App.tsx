@@ -22,7 +22,6 @@ import NavBar from "./components/NavBar/NavBar";
 
 //--
 const App: React.FC<{}> = () => {
-  console.log("render");
   return (
     <div className="app">
       <UserAuthProvider>

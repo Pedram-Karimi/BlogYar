@@ -21,9 +21,10 @@
   width: 450px;
   height: 220px;
   display: flex;
+  border: 1px solid var(--light-border);
   border-radius: 8px;
   overflow: hidden;
-  background-color: var(--dark-background);
+  background-color: var(--layer2-background);
 }
 .header-post img {
   cursor: pointer;

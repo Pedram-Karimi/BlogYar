@@ -14,7 +14,7 @@ img {
   object-fit: cover;
 }
 body {
-  background-color: #151515;
+  background-color: #101010;
 }
 :root {
   --primary-color: #00d1bc;
@@ -23,10 +23,11 @@ body {
   --light-color-hover: rgb(185, 185, 185);
   --dark-color: #535353;
   --heart-color: rgb(209, 6, 40);
-  --deafult-background: #1b1b1b;
+  --layer2-background: #111111;
   --dark-color-hover: #646464;
   --dark-border: #181818;
-  --light-border: #202020;
+  --light-border: #1c1c1c;
+  --lighter-border: #252525;
   --white-text: rgb(235, 235, 235);
-  --dark-background: #191919;
+  --dark-background: #131313;
 }
