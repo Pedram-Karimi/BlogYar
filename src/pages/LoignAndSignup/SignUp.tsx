@@ -21,6 +21,7 @@ const SignUp: React.FC = () => {
   const [registerEmail, setRegisterEmail] = useState<string>("");
   const [registerPassword, setRegisterPassword] = useState<string>("");
   const [registerFirstName, setRegisterFirstName] = useState<string>("");
+  const [error, setError] = useState<string>();
 
   let navigate = useNavigate(); // react-router navigate
 
@@ -48,7 +49,7 @@ const SignUp: React.FC = () => {
       );
       navigate("/");
     } catch (err: any) {
-      console.log(err.message);
+      setError(err.message.split("/")[1].split(")")[0]);
     }
   };
 
@@ -83,6 +84,7 @@ const SignUp: React.FC = () => {
                 setRegisterPassword(e.target.value);
               }}
             />
+            {error && <p className="login-error-txt">{error}</p>}
             <button className="signup_btn">Sign up</button>
           </form>
         </div>

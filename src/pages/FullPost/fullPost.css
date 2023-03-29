@@ -40,7 +40,8 @@
   font-weight: normal !important;
   margin-left: 20px;
   font-size: 14px !important;
-  background-color: var(--dark-color);
+  background-color: var(--light-background);
+  border: 1px solid var(--lighter-border);
   transition: 0.2s;
   align-items: center;
   cursor: pointer;
@@ -49,12 +50,12 @@
   padding: 5px 10px;
 }
 .followed-btn {
-  background-color: var(--light-color);
+  background-color: var(--light-color-hover);
   color: var(--dark-color);
 }
 .followed-btn:hover {
-  background-color: var(--light-color) !important;
-  color: var(--dark-color) !important;
+  /* background-color: var(); */
+  border: 1px solid white;
 }
 .follow-btn svg {
   width: 10px;
@@ -62,7 +63,7 @@
   fill: var(--white-text);
 }
 .follow-btn:hover {
-  color: var(--light-color);
+  border: 1px solid white;
 }
 /*post content*/
 .post-content {
@@ -234,7 +235,8 @@ h6 {
 }
 .post-writer-data-bio {
   font-size: 15px;
-  color: var(--dark-color);
+  color: var(--light-color);
+  font-weight: bold;
 }
 .post-writer-data img {
   width: 50px;
@@ -304,10 +306,10 @@ h6 {
   border-radius: 8px;
   background-color: transparent;
   transition: 0.2s;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--lighter-border);
 }
 .write-comment-footer button:hover {
-  background-color: var(--dark-background);
+  background-color: var(--dark-border);
 }
 .comments-container {
   margin-top: 20px;
@@ -325,7 +327,6 @@ h6 {
 }
 .comment-box-header {
   display: flex;
-  /* margin-bottom: 20px; */
   gap: 15px;
   align-items: center;
 }

@@ -15,6 +15,7 @@ const Login: React.FC = () => {
 
   const [LoginEmail, setLoginEmail] = useState<string>("");
   const [LoginPassword, setLoginPassword] = useState<string>("");
+  const [error, setError] = useState<string>();
 
   // use context ---
 
@@ -30,7 +31,7 @@ const Login: React.FC = () => {
       await signIn(LoginEmail, LoginPassword);
       return navigate("/");
     } catch (err: any) {
-      console.log(err.message);
+      setError(err.message.split("/")[1].split(")")[0]);
     }
   };
 
@@ -57,6 +58,7 @@ const Login: React.FC = () => {
                 setLoginPassword(e.target.value);
               }}
             />
+            {error && <p className="login-error-txt">{error}</p>}
             <button className="signup_btn">Login</button>
           </form>
         </div>

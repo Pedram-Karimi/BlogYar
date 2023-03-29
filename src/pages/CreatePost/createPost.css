@@ -19,6 +19,7 @@
 }
 .create-post-content {
   width: 100%;
+  height: 200px;
   font-size: 20px !important;
 }
 .create-post-content p,
@@ -49,7 +50,7 @@ small {
 }
 .submitArticle {
   padding: 10px;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--lighter-border);
   border-radius: 8px;
   cursor: pointer;
   transition: 0.2s;
@@ -57,5 +58,5 @@ small {
   margin-bottom: 20px;
 }
 .submitArticle:hover {
-  background-color: var(--dark-background);
+  background-color: var(--dark-border);
 }

@@ -71,7 +71,7 @@ const NewestPosts: React.FC = () => {
           style={{
             marginBottom: "40px",
             color: "var(--white-text)",
-            borderBottom: "1px dotted var(--light-border)",
+            borderBottom: "1px dotted var(--lighter-border)",
             padding: "10px 0px",
           }}
         >

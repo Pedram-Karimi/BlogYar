@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  padding-top: 10vh;
   color: white;
   margin: auto;
 }
@@ -20,7 +20,7 @@
   min-width: 350px;
   max-width: 350px;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 8px;
   border: 1px solid var(--light-border);
   padding: 15px;
 }
@@ -41,9 +41,9 @@
   font-size: 14px;
   width: 100%;
   outline: none;
-  border-radius: 5px;
-  border: 3px solid var(--dark-border);
-  background-color: var(--dark-border);
+  border-radius: 8px;
+  border: 1px solid var(--light-border);
+  background-color: var(--layer2-background);
   color: white;
   margin-bottom: 20px;
 }
@@ -56,7 +56,7 @@
   width: 100%;
   padding: 13px 10px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .input_box button:hover {
   background-color: var(--primary-color-hover);
@@ -71,4 +71,12 @@
 }
 .signup-link {
   margin-left: 15px;
+}
+.login-error-txt {
+  font-size: 15px !important;
+  padding: 10px;
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.252);
+  border-radius: 8px;
+  margin: 5px 0px;
 }

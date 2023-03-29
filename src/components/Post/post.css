@@ -5,7 +5,7 @@
   padding: 20px 0px;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--light-border);
+  border-bottom: 1px dotted var(--lighter-border);
 }
 .blog-image {
   width: 160px;

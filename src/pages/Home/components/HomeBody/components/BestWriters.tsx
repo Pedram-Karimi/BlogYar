@@ -59,13 +59,14 @@ const BestWriters: React.FC = () => {
         limit(5)
       );
       const getTopPosts = await getDocs(q);
+      console.log(getTopPosts);
       getTopPosts.docs.forEach((doc) => {
         setWriters((pervData) => [...pervData, { ...doc.data(), id: doc.id }]);
       });
     };
     getData();
   }, []);
-
+  // console.log(writers);
   // jsx ---
   return (
     <div className="best-writers">

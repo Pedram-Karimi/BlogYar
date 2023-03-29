@@ -22,7 +22,7 @@
 .best-writers h2 {
   width: 90%;
   padding-bottom: 3px;
-  border-bottom: 1px dotted var(--light-border);
+  border-bottom: 1px dotted var(--lighter-border);
 }
 .top-writers-container {
   width: 100%;
@@ -50,7 +50,8 @@
   margin-bottom: 5px;
 }
 .top-writer-name {
-  color: var(--dark-color);
+  color: var(--light-color);
+  font-weight: bold;
   font-size: 12px;
 }
 @media screen and (max-width: 1000px) {

@@ -7,7 +7,7 @@
 }
 .sign-out-btn {
   background-color: transparent;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--lighter-border);
   cursor: pointer;
   border-radius: 8px;
   padding: 10px;
@@ -16,6 +16,10 @@
   right: 0px;
   top: 0px;
   width: fit-content;
+}
+.sign-out-btn:hover {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.252);
 }
 .genrall-info-config {
   width: 100%;
@@ -50,12 +54,13 @@
   background-color: transparent;
   color: var(--white-text);
   padding-bottom: 10px;
+  font-size: 15px;
   border-bottom: 1px dotted var(--light-border);
 }
 .submit-profile-chnage {
   width: fit-content;
   background-color: transparent;
-  border: 1px solid var(--light-border);
+  border: 1px solid var(--lighter-border);
   outline: none;
   font-size: 17px;
   border-radius: 8px;
@@ -64,7 +69,7 @@
 }
 .submit-profile-chnage-disable {
   pointer-events: none;
-  color: var(--light-border);
+  color: var(--lighter-border);
 }
 
 .current-user-short-info {
@@ -76,7 +81,7 @@
 .current-user-short-info p {
   width: 100%;
   color: var(--white-text);
-  border-bottom: 1px dotted var(--light-border);
+  border-bottom: 1px dotted var(--lighter-border);
   padding: 10px;
 }
 .change-profile-pic-div {
@@ -99,8 +104,9 @@
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.change-profile-pic-div img {
+.change-profile-pic-div svg {
   width: 40px;
+  fill: white;
 }
 .inputTag-avatar {
   width: 100%;
@@ -136,7 +142,7 @@
   cursor: auto !important;
 }
 .user-posts-menu {
-  border-bottom: 1px solid var(--light-border);
+  border-bottom: 1px dotted var(--lighter-border);
   display: flex;
   justify-content: center;
   top: 0px;
