@@ -30,22 +30,22 @@ const App: React.FC<{}> = () => {
             <NavBar />
           </ShBoxContextProvider>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Newest-posts" element={<NewestPosts />} />
-            <Route path="/post/:id" element={<FullPost />} />
-            <Route path="/post/create" element={<CreatePost />} />
+            <Route path="/blogyar" element={<Home />} />
+            <Route path="/blogyar/Newest-posts" element={<NewestPosts />} />
+            <Route path="/blogyar/post/:id" element={<FullPost />} />
+            <Route path="/blogyar/post/create" element={<CreatePost />} />
             <Route
-              path="/post/publish"
+              path="/blogyar/post/publish"
               element={
                 <PublishContextProvider>
                   <PublishPost />
                 </PublishContextProvider>
               }
             />
-            <Route path="/profile" element={<UserDetail />} />
-            <Route path="/user/:id" element={<PostWriterProfile />} />
-            <Route path="/Login" element={<Login />} />
-            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/blogyar/profile" element={<UserDetail />} />
+            <Route path="/blogyar/user/:id" element={<PostWriterProfile />} />
+            <Route path="/blogyar/Login" element={<Login />} />
+            <Route path="/blogyar/sign-up" element={<SignUp />} />
           </Routes>
         </>
       </UserAuthProvider>

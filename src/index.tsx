@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode>
-  <BrowserRouter>
+  <BrowserRouter basename={"https://Pedram-Karimi.github.io/blogyar"}>
     <ScrollToTop />
     <App />
   </BrowserRouter>
