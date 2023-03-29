@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/blogyar/static/css/main.e1b3a7ca.css",
+    "main.js": "/blogyar/static/js/main.b1b2b407.js",
+    "index.html": "/blogyar/index.html",
+    "main.e1b3a7ca.css.map": "/blogyar/static/css/main.e1b3a7ca.css.map",
+    "main.b1b2b407.js.map": "/blogyar/static/js/main.b1b2b407.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e1b3a7ca.css",
+    "static/js/main.b1b2b407.js"
+  ]
+}
