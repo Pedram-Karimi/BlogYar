@@ -56,12 +56,12 @@ const SearchPopup: React.FC = () => {
     let client = new Typesense.Client({
       nodes: [
         {
-          host: "496vwfrlxjpon1sqp-1.a1.typesense.net", // where xxx is the ClusterID of your Typesense Cloud cluster
+          host: "ufb1o5rgsay69lqpp-1.a1.typesense.net",
           port: 443,
           protocol: "https",
         },
       ],
-      apiKey: "oLh9YpwMMlZrmb4FXcqE3N71mohJGP06",
+      apiKey: "5UVV8GscWNk4SdcbQn8ElFggNYYS91Zm",
       connectionTimeoutSeconds: 2,
     });
     let search = {

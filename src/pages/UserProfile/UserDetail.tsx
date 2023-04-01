@@ -128,7 +128,7 @@ const UserDetail: React.FC = () => {
           className="sign-out-btn"
           onClick={() => {
             logOut();
-            navigate("/blogyar");
+            navigate("/");
           }}
         >
           Sign out

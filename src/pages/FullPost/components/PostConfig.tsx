@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"; // react-hooks
 import { db } from "../../../Firebase/FirebaseConfig"; // firebase db ref
+import { useNavigate } from "react-router-dom";
 import {
   doc,
   setDoc,
@@ -46,6 +47,7 @@ const PostConfig: React.FC<Props> = ({
   const [postLikes, setPostLikes] = useState<number>(0);
   const [bookmarkClass, setBookmarkClass] = useState<string>("");
   const [likesClass, setLikesClass] = useState<string>("");
+  const navigate = useNavigate();
 
   // bookmark check ------------------------------
 
@@ -83,50 +85,54 @@ const PostConfig: React.FC<Props> = ({
   // likeing function ------------------------------
 
   const handleLike = async () => {
-    userLikes.includes(postId)
-      ? setPostLikes((pervLikes) => pervLikes - 1)
-      : setPostLikes((pervLikes) => pervLikes + 1);
+    if (user?.uid) {
+      userLikes.includes(postId)
+        ? setPostLikes((pervLikes) => pervLikes - 1)
+        : setPostLikes((pervLikes) => pervLikes + 1);
 
-    // db refs
-    const likesRef = doc(db, "Likes", user?.uid);
-    const postRef = doc(db, "Posts", postId);
-    const writerRef = doc(db, "users", postWriterId);
+      // db refs
+      const likesRef = doc(db, "Likes", user?.uid);
+      const postRef = doc(db, "Posts", postId);
+      const writerRef = doc(db, "users", postWriterId);
 
-    // set likes
-    try {
-      setDoc(likesRef, {
-        likes: userLikes.includes(postId)
-          ? arrayRemove(postId)
-          : arrayUnion(postId),
-      });
+      // set likes
+      try {
+        setDoc(likesRef, {
+          likes: userLikes.includes(postId)
+            ? arrayRemove(postId)
+            : arrayUnion(postId),
+        });
 
-      // update like count in post document
+        // update like count in post document
 
-      await runTransaction(db, async (transaction) => {
-        const postDoc = await transaction.get(postRef);
-        if (!postDoc.exists()) {
-          throw "Document does not exist!";
-        }
-        const newLikedData = userLikes.includes(postId)
-          ? postDoc.data().Likes + -1
-          : postDoc.data().Likes + 1;
-        transaction.update(postRef, { Likes: newLikedData });
-      });
+        await runTransaction(db, async (transaction) => {
+          const postDoc = await transaction.get(postRef);
+          if (!postDoc.exists()) {
+            throw "Document does not exist!";
+          }
+          const newLikedData = userLikes.includes(postId)
+            ? postDoc.data().Likes + -1
+            : postDoc.data().Likes + 1;
+          transaction.update(postRef, { Likes: newLikedData });
+        });
 
-      // update like count in post writer document
+        // update like count in post writer document
 
-      await runTransaction(db, async (transaction) => {
-        const writerDoc = await transaction.get(writerRef);
-        if (!writerDoc.exists()) {
-          throw "Document does not exist!";
-        }
-        const newLikedData = userLikes.includes(postId)
-          ? writerDoc.data().TotalLikes + -1
-          : writerDoc.data().TotalLikes + 1;
-        transaction.update(writerRef, { TotalLikes: newLikedData });
-      });
-    } catch (err) {
-      console.log(err);
+        await runTransaction(db, async (transaction) => {
+          const writerDoc = await transaction.get(writerRef);
+          if (!writerDoc.exists()) {
+            throw "Document does not exist!";
+          }
+          const newLikedData = userLikes.includes(postId)
+            ? writerDoc.data().TotalLikes + -1
+            : writerDoc.data().TotalLikes + 1;
+          transaction.update(writerRef, { TotalLikes: newLikedData });
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      navigate("/login");
     }
   };
 
@@ -181,9 +187,7 @@ const PostConfig: React.FC<Props> = ({
       <div className="post-writer-data">
         <Link
           to={
-            postWriterId !== user?.uid
-              ? `/blogyar/user/${postWriterId}`
-              : "/blogyar/profile"
+            postWriterId !== user?.uid ? `//user/${postWriterId}` : "//profile"
           }
           className="post-writer-data"
         >

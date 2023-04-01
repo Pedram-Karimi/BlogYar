@@ -121,7 +121,7 @@ const UserSubscriptions: React.FC = () => {
               return (
                 <div className="subed-user" key={index}>
                   <Link
-                    to={`/blogyar/user/${subedPerson?.id}`}
+                    to={`/user/${subedPerson?.id}`}
                     style={{ textDecoration: "none" }}
                   >
                     <div className="subed-user-info">

@@ -103,14 +103,11 @@ const HeaderPost: React.FC<Props> = ({
   // jsx ---
   return (
     <div className="header-post">
-      <Link
-        to={`/blogyar/post/${id}`}
-        style={{ textDecoration: "none", width: "55%" }}
-      >
+      <Link to={`/post/${id}`} style={{ textDecoration: "none", width: "55%" }}>
         {Writer && <img src={PostImage} />}
       </Link>
       <div className="top-posts-post-info">
-        <Link to={`/blogyar/post/${id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
           <div className="top-post-post-title">
             <h2>{Title}</h2>
             <p>{Description}</p>
@@ -118,11 +115,7 @@ const HeaderPost: React.FC<Props> = ({
         </Link>
         <div className="top-posts-post-writer">
           <Link
-            to={
-              Writer !== user?.uid
-                ? `/blogyar/user/${Writer}`
-                : "/blogyar/profile"
-            }
+            to={Writer !== user?.uid ? `/user/${Writer}` : "//profile"}
             style={{ textDecoration: "none" }}
           >
             <p className="top-posts-post-writer-name">

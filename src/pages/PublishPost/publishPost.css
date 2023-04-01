@@ -14,7 +14,7 @@
   border: 1px solid var(--light-border);
   height: 550px;
   display: flex;
-  background-color: var(--dark-background);
+  background-color: var(--layer2-background);
 }
 .publish-div-right-side {
   height: 100%;

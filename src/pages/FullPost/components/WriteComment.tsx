@@ -33,7 +33,7 @@ const WriteComment: React.FC<{ postId: string }> = ({ postId }) => {
     // check
 
     if (!user) {
-      navigate("/blogyar/Login");
+      navigate("//Login");
     }
 
     if (commentText !== "") {

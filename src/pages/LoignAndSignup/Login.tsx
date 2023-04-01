@@ -29,7 +29,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     try {
       await signIn(LoginEmail, LoginPassword);
-      return navigate("/blogyar");
+      return navigate("/");
     } catch (err: any) {
       setError(err.message.split("/")[1].split(")")[0]);
     }
@@ -64,7 +64,7 @@ const Login: React.FC = () => {
         </div>
         <div className="signUp-box">
           do not have account?
-          <Link to="/blogyar/sign-up" className="signup-link">
+          <Link to="/sign-up" className="signup-link">
             sign up
           </Link>
         </div>
