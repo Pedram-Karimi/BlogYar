@@ -46,7 +46,7 @@ const CreatePost: React.FC<{}> = ({}) => {
     let title = postTitle;
     let content = postContent;
     localStorage.setItem("post", JSON.stringify({ title, content }));
-    navigate("/post/publish");
+    navigate("/blogyar/post/publish");
   };
   //jsx ---
   return (

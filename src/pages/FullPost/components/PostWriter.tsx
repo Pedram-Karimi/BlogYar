@@ -83,7 +83,7 @@ const PostWriter: React.FC<Props> = ({
       };
       updateWriterFollower();
     } else {
-      navigate("/Login");
+      navigate("/blogyar/Login");
     }
   };
 
@@ -113,7 +113,11 @@ const PostWriter: React.FC<Props> = ({
   return (
     <div className="post-writer">
       <Link
-        to={postWriterId !== user?.uid ? `/user/${postWriterId}` : "/profile"}
+        to={
+          postWriterId !== user?.uid
+            ? `/blogyar/user/${postWriterId}`
+            : "/blogyar/profile"
+        }
       >
         <img src={postWriterPic} />
       </Link>
@@ -121,7 +125,9 @@ const PostWriter: React.FC<Props> = ({
         <div className="post-writer-name">
           <Link
             to={
-              postWriterId !== user?.uid ? `/user/${postWriterId}` : "/profile"
+              postWriterId !== user?.uid
+                ? `/blogyar/user/${postWriterId}`
+                : "/blogyar/profile"
             }
             style={{ textDecoration: "none" }}
           >

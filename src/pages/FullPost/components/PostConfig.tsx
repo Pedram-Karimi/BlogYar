@@ -180,7 +180,11 @@ const PostConfig: React.FC<Props> = ({
       </div>
       <div className="post-writer-data">
         <Link
-          to={postWriterId !== user?.uid ? `/user/${postWriterId}` : "/profile"}
+          to={
+            postWriterId !== user?.uid
+              ? `/blogyar/user/${postWriterId}`
+              : "/blogyar/profile"
+          }
           className="post-writer-data"
         >
           <img src={postWriterPic} />

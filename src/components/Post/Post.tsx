@@ -134,7 +134,7 @@ const Post: React.FC<Props> = ({
   return (
     <div className="post">
       <div className="blog-info">
-        <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
+        <Link to={`/blogyar/post/${id}`} style={{ textDecoration: "none" }}>
           <h2 className="blog-title">{Title}</h2>
           <p className="short-blog-info">{Description}</p>
         </Link>
@@ -148,12 +148,18 @@ const Post: React.FC<Props> = ({
           <path d="M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" />
         </svg>
         <div className="blog-writer">
-          <Link to={Writer !== user?.uid ? `/user/${Writer}` : "/profile"}>
+          <Link
+            to={
+              Writer !== user?.uid
+                ? `/blogyar/user/${Writer}`
+                : "/blogyar/profile"
+            }
+          >
             <img src={currentWriter?.UserProfile} className="blog-writer-img" />
           </Link>
           <div className="writer-text-info">
             <Link
-              to={Writer !== user?.uid ? `/user/${Writer}` : "/profile"}
+              to={Writer !== user?.uid ? `/user/${Writer}` : "/blogyar/profile"}
               style={{ textDecoration: "none" }}
             >
               <p className="writer-name">{currentWriter?.UserName}</p>
@@ -162,7 +168,7 @@ const Post: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      <Link to={`/post/${id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/blogyar/post/${id}`} style={{ textDecoration: "none" }}>
         <img src={PostImage} className="blog-image" />
       </Link>
     </div>

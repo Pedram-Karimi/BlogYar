@@ -49,16 +49,14 @@ const NavBar: React.FC = () => {
     <>
       <div className="navBar">
         <div className="left-section">
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/blogyar" style={{ textDecoration: "none" }}>
             <p className="logo">BlogYar</p>
           </Link>
           <Link
-            to={user ? "/post/create" : ""}
+            to={user ? "/blogyar/post/create" : ""}
             style={{ textDecoration: "none" }}
           >
-            <p className="create-new-post">
-              {user ? "write a new post" : "what is BlogYar?"}
-            </p>
+            {user && <p className="create-new-post">write a new post</p>}
           </Link>
         </div>
         <div className="right-section">
@@ -74,16 +72,16 @@ const NavBar: React.FC = () => {
 
           {!user && (
             <div className="login-and-signup">
-              <Link to="/Login" className="login-link link">
+              <Link to="/blogyar/Login" className="login-link link">
                 <div className="login-btn">login</div>
               </Link>
-              <Link to="/sign-up" className="sign-up-link link">
+              <Link to="/blogyar/sign-up" className="sign-up-link link">
                 <div className="signup-btn">sign-up</div>
               </Link>
             </div>
           )}
           {user && (
-            <Link to="/profile">
+            <Link to="/blogyar/profile">
               {userDataState?.UserProfile ? (
                 <img
                   className="user-avatar"

@@ -8,10 +8,10 @@ const Menu: React.FC<{}> = () => {
   // jsx ---
   return (
     <div className="menu">
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/blogyar" style={{ textDecoration: "none" }}>
         <p>First page</p>
       </Link>
-      <Link to="/Newest-posts" style={{ textDecoration: "none" }}>
+      <Link to="/blogyar/Newest-posts" style={{ textDecoration: "none" }}>
         <p>Newest posts</p>
       </Link>
     </div>

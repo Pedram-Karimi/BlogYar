@@ -36,17 +36,20 @@ const TopWriter: React.FC<User> = ({
   return (
     <div className="top-writer">
       <Link
-        to={id !== user?.uid ? `/user/${id}` : "/profile"}
+        to={id !== user?.uid ? `/blogyar/user/${id}` : "/blogyar/profile"}
         style={{ textDecoration: "none" }}
       >
         <img src={UserProfile} />
       </Link>
       <div className="top-writer-info">
-        <Link to={`/post/${lastPost}`} style={{ textDecoration: "none" }}>
+        <Link
+          to={`/blogyar/post/${lastPost}`}
+          style={{ textDecoration: "none" }}
+        >
           <p className="top-writer-top-post">{lastPostTitle}</p>
         </Link>
         <Link
-          to={id !== user?.uid ? `/user/${id}` : "/profile"}
+          to={id !== user?.uid ? `/blogyar/user/${id}` : "/blogyar/profile"}
           style={{ textDecoration: "none" }}
         >
           <p className="top-writer-name">{UserName}</p>

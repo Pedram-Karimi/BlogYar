@@ -47,7 +47,7 @@ const SignUp: React.FC = () => {
         },
         { merge: true }
       );
-      navigate("/");
+      navigate("/blogyar");
     } catch (err: any) {
       setError(err.message.split("/")[1].split(")")[0]);
     }
@@ -90,7 +90,7 @@ const SignUp: React.FC = () => {
         </div>
         <div className="signUp-box">
           do you have account?
-          <Link to="/login" className="signup-link">
+          <Link to="/blogyar/login" className="signup-link">
             Log in
           </Link>
         </div>

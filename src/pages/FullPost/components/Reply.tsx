@@ -116,13 +116,21 @@ const Reply: React.FC<IntrinsicAttributes & Props> = ({
     <div className="comment-box reply-level">
       <div className="comment-box-header">
         <Link
-          to={replyWriter !== user?.uid ? `/user/${replyWriter}` : "/profile"}
+          to={
+            replyWriter !== user?.uid
+              ? `/blogyar/user/${replyWriter}`
+              : "/blogyar/profile"
+          }
         >
           <img src={writer?.UserProfile} />
         </Link>
         <div>
           <Link
-            to={replyWriter !== user?.uid ? `/user/${replyWriter}` : "/profile"}
+            to={
+              replyWriter !== user?.uid
+                ? `/blogyar/user/${replyWriter}`
+                : "/blogyar/profile"
+            }
             style={{ textDecoration: "none" }}
           >
             <p>{writer?.UserName}</p>

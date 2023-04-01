@@ -86,7 +86,7 @@ export function PublishContextProvider({ children }: ChildComponents) {
             );
           }
 
-          navigate("/");
+          navigate("/blogyar");
         } catch (err) {
           console.log(err);
         }

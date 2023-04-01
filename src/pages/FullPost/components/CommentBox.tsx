@@ -187,7 +187,9 @@ const CommentBox: React.FC<Props> = ({
       <div className="comment-box-header">
         <Link
           to={
-            commentWriter !== user?.uid ? `/user/${commentWriter}` : "/profile"
+            commentWriter !== user?.uid
+              ? `/blogyar/user/${commentWriter}`
+              : "/blogyar/profile"
           }
         >
           <img src={commentWriterPic ?? writer?.UserProfile} />
@@ -196,8 +198,8 @@ const CommentBox: React.FC<Props> = ({
           <Link
             to={
               commentWriter !== user?.uid
-                ? `/user/${commentWriter}`
-                : "/profile"
+                ? `/blogyar/user/${commentWriter}`
+                : "/blogyar/profile"
             }
             style={{ textDecoration: "none" }}
           >
