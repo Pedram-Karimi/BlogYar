@@ -85,7 +85,7 @@ export function PublishContextProvider({ children }: ChildComponents) {
               { merge: true }
             );
           }
-
+          console.log("sallamss");
           navigate("/");
         } catch (err) {
           console.log(err);

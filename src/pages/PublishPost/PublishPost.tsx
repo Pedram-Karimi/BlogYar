@@ -32,6 +32,7 @@ const PublishPost: React.FC = () => {
   const [postImgUrl, setPostImgUrl] = useState<string>();
   const [updateCheck, setUpdateCheck] = useState<Boolean>(false);
   const [postImageState, setPostImageState] = useState<any>();
+  const [submitBtnClass, setSubmitBtnClass] = useState<string>("submit-post");
 
   const navigate = useNavigate(); // react-router navigate
 
@@ -65,6 +66,7 @@ const PublishPost: React.FC = () => {
   // publish post to firestore db
 
   const publishPost = () => {
+    setSubmitBtnClass("submit-post disable");
     if (imageUpload && description && tags.length === 5 && title) {
       const imageRef = ref(storage, `${postImgUrl}/img`);
       uploadBytes(imageRef, imageUpload).then(() => {
@@ -76,32 +78,33 @@ const PublishPost: React.FC = () => {
           });
         });
       });
-      if (updateCheck) {
-        changePostContent({
-          PostImage: postImageState,
-          Title: title,
-          Tags: tags,
-          Writer: user.uid,
-          Content: localPosts.content,
-        });
-        changePostData({
-          Title: title,
-          Description: description,
-          Tags: tags,
-          PostImage: postImageState,
-          Writer: user.uid,
-          Likes: 0,
-          Viewers: [],
-          Views: 0,
-        });
-        localStorage.clear();
-      }
-      // navigate("/");
+      //navigate("/");
     } else {
       alert("fill the inputs");
     }
   };
-
+  useEffect(() => {
+    if (updateCheck) {
+      changePostContent({
+        PostImage: postImageState,
+        Title: title,
+        Tags: tags,
+        Writer: user.uid,
+        Content: localPosts.content,
+      });
+      changePostData({
+        Title: title,
+        Description: description,
+        Tags: tags,
+        PostImage: postImageState,
+        Writer: user.uid,
+        Likes: 0,
+        Viewers: [],
+        Views: 0,
+      });
+      localStorage.clear();
+    }
+  }, [updateCheck]);
   // jsx ---
   return (
     <div className="publish-post-container">
@@ -109,7 +112,7 @@ const PublishPost: React.FC = () => {
         <div className="publish-div-right-side">
           <p className="publish-post-title">Thumbnail of post</p>
           <p className="publish-post-text">
-            In here you can chose the way your post look on the website.
+            In here you can choose the way your post look on the website.
           </p>
           <div
             className="publish-post-img"
@@ -238,7 +241,7 @@ const PublishPost: React.FC = () => {
               )}
             </form>
           </div>
-          <div className="submit-post" onClick={publishPost}>
+          <div className={submitBtnClass} onClick={publishPost}>
             Publish post
           </div>
         </div>

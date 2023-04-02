@@ -36,6 +36,18 @@
     font-size: 15px;
     -webkit-box-orient: vertical;
   }
+  .publish-post {
+    flex-direction: column;
+    width: 90vw !important;
+    margin: auto;
+    overflow: hidden;
+  }
+  .publish-post-img {
+    width: 100% !important;
+  }
+  .inputTag {
+    width: 100% !important;
+  }
   .top-post-post-title p {
     color: var(--light-color);
     overflow: hidden;
@@ -51,7 +63,13 @@
     padding: 0px 0px;
     width: 100%;
   }
-
+  .header-post {
+    background-color: red;
+    height: 220px !important;
+  }
+  .create-post {
+    padding: 20px !important;
+  }
   /* portfolio */
 
   .genrall-info-config {
