@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/blogyar/static/css/main.ee841c61.css",
-    "main.js": "/blogyar/static/js/main.0623fc18.js",
+    "main.css": "/blogyar/static/css/main.9d39abd8.css",
+    "main.js": "/blogyar/static/js/main.85d77a43.js",
     "index.html": "/blogyar/index.html",
-    "main.ee841c61.css.map": "/blogyar/static/css/main.ee841c61.css.map",
-    "main.0623fc18.js.map": "/blogyar/static/js/main.0623fc18.js.map"
+    "main.9d39abd8.css.map": "/blogyar/static/css/main.9d39abd8.css.map",
+    "main.85d77a43.js.map": "/blogyar/static/js/main.85d77a43.js.map"
   },
   "entrypoints": [
-    "static/css/main.ee841c61.css",
-    "static/js/main.0623fc18.js"
+    "static/css/main.9d39abd8.css",
+    "static/js/main.85d77a43.js"
   ]
 }
