@@ -49,15 +49,15 @@ export function PublishContextProvider({ children }: ChildComponents) {
             let client = new Typesense.Client({
               nodes: [
                 {
-                  host: "ufb1o5rgsay69lqpp-1.a1.typesense.net",
+                  host: "j5i61nycs892ab3vp-1.a1.typesense.net",
                   port: 443,
                   protocol: "https",
                 },
               ],
-              apiKey: "tKmLwHlcYVWnynZw2wlqKoHoNt7QZutz",
+              apiKey: "w9NW4izFebq67SNnaD9mI1pxjKWVHATA",
               connectionTimeoutSeconds: 2,
             });
-            // const myCollection = {
+            // const myCollection: any = {
             //   name: "posts",
             //   fields: [
             //     { name: "id", type: "string" },
